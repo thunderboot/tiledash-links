@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.thunderboot.tiledash",
+      "sha256_cert_fingerprints": [
+        "DC:67:6A:8A:0F:46:8D:40:75:58:EA:E8:4B:E2:00:A7:85:50:08:90:11:B9:54:29:C2:A6:32:85:CD:81:28:ED",
+        "CB:B1:7F:45:4D:5B:9C:56:FE:EF:9E:A7:F5:20:A9:BD:6E:F0:33:92:8D:B6:2D:F1:59:3E:8C:07:60:6F:79:21"
+      ]
+    }
+  }
+]

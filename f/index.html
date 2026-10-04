@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Play TileDash with me</title>
+<meta property="og:title" content="Play TileDash with me">
+<meta property="og:description" content="Add me as a friend in TileDash.">
+<style>
+  body { font-family: system-ui, sans-serif; text-align: center; padding: 48px 16px; background: #f4f1ea; color: #222; }
+  .code { font-size: 2rem; font-weight: 700; letter-spacing: .15em; margin: 16px 0 32px; }
+</style>
+</head>
+<body>
+<!-- Stub landing page. The real design and en/sv copy are decided elsewhere on the multiplayer map. -->
+<h1>TileDash</h1>
+<p>Install TileDash, then add this friend code:</p>
+<p class="code" id="code">-</p>
+<p><a href="https://play.google.com/store/apps/details?id=com.thunderboot.tiledash">Get it on Google Play</a></p>
+<script>
+  var c = new URLSearchParams(location.search).get("c");
+  if (c && /^[A-Za-z0-9]{1,16}$/.test(c)) document.getElementById("code").textContent = c;
+</script>
+</body>
+</html>

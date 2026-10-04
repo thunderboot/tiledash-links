@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["QSRQG39L66.com.thunderboot.tiledash"],
+        "components": [
+          { "/": "/f/*", "comment": "Friend share links" }
+        ]
+      }
+    ]
+  }
+}
