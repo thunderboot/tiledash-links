@@ -3,23 +3,258 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Play TileDash with me</title>
-<meta property="og:title" content="Play TileDash with me">
-<meta property="og:description" content="Add me as a friend in TileDash.">
+<title>Add me on TileDash</title>
+<meta name="description" content="A word game with falling letters. Play me in a friend challenge!">
+<!-- Open Graph: static and in English, because messengers fetch them without running JavaScript. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TileDash">
+<meta property="og:title" content="Add me on TileDash">
+<meta property="og:description" content="A word game with falling letters. Play me in a friend challenge!">
+<meta property="og:image" content="https://tiledash.thunderboot.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://tiledash.thunderboot.com/f/">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Add once TileDash has an App Store ID: <meta name="apple-itunes-app" content="app-id=<App Store ID>"> -->
+<meta name="theme-color" content="#2f5d24">
+<link rel="icon" href="/assets/logo.png">
 <style>
-  body { font-family: system-ui, sans-serif; text-align: center; padding: 48px 16px; background: #f4f1ea; color: #222; }
-  .code { font-size: 2rem; font-weight: 700; letter-spacing: .15em; margin: 16px 0 32px; }
+  @font-face {
+    font-family: "Nunito Black";
+    src: url("/assets/nunito-black.ttf") format("truetype");
+    font-weight: 900;
+    font-display: swap;
+  }
+  :root {
+    --cream: #fbf1dc;
+    --cream-edge: #e9d3a8;
+    --brown: #3a2314;
+    --brown-soft: #6b4a2f;
+    --green: #3f8a2c;
+    --green-dark: #2f5d24;
+    --shadow: rgba(25, 40, 15, 0.45);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--brown);
+    background: #2f5d24 url("/assets/background.jpg") center top / cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 24px 16px;
+  }
+  main {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    flex: 1;
+  }
+  .logo { width: 100%; max-width: 340px; height: auto; filter: drop-shadow(0 6px 10px var(--shadow)); }
+  .card {
+    width: 100%;
+    background: var(--cream);
+    border: 3px solid var(--cream-edge);
+    border-radius: 22px;
+    box-shadow: 0 10px 24px var(--shadow);
+    padding: 24px 20px;
+    text-align: center;
+  }
+  h1 {
+    font-family: "Nunito Black", system-ui, sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin: 0 0 18px;
+  }
+  .code-label { margin: 0 0 6px; font-weight: 600; color: var(--brown-soft); text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; }
+  .code-row { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  .code {
+    font-family: "Nunito Black", ui-monospace, monospace;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 9vw, 2.4rem);
+    letter-spacing: .12em;
+    background: #fffaf0;
+    border: 2px solid var(--cream-edge);
+    border-bottom-width: 6px;
+    border-radius: 14px;
+    padding: 6px 16px;
+    user-select: all;
+  }
+  button, .button {
+    font: inherit;
+    font-weight: 700;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .copy { background: var(--brown); color: var(--cream); padding: 10px 18px; }
+  .open {
+    margin-top: 20px;
+    background: var(--green);
+    color: #fff;
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 0 var(--green-dark);
+  }
+  .open:active, .copy:active { transform: translateY(2px); }
+  .steps { margin: 20px 0 0; line-height: 1.5; }
+  .badges { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; }
+  /* Official artwork, unmodified. Google's PNGs carry their own clear space: the en one more than the sv one. */
+  .badge-google-play img { display: block; height: 72px; width: auto; }
+  .badge-google-play img.tight { height: 58px; }
+  .badge-app-store img { display: block; height: 48px; width: auto; }
+  footer { margin-top: 24px; font-size: .9rem; color: var(--cream); text-shadow: 0 1px 2px var(--shadow); }
+  footer a { color: var(--cream); }
+  [hidden] { display: none !important; }
 </style>
 </head>
 <body>
-<!-- Stub landing page. The real design and en/sv copy are decided elsewhere on the multiplayer map. -->
-<h1>TileDash</h1>
-<p>Install TileDash, then add this friend code:</p>
-<p class="code" id="code">-</p>
-<p><a href="https://play.google.com/store/apps/details?id=com.thunderboot.tiledash">Get it on Google Play</a></p>
+<main>
+  <img class="logo" src="/assets/logo.png" alt="TileDash" width="720" height="309">
+
+  <section class="card">
+    <h1 id="heading">You're invited to play TileDash!</h1>
+    <div id="invite" hidden>
+      <p class="code-label" id="code-label">Friend code</p>
+      <div class="code-row">
+        <span class="code" id="code"></span>
+        <button class="copy" id="copy" type="button">Copy</button>
+      </div>
+      <a class="button open" id="open" href="tiledash://f">Open in TileDash</a>
+      <p class="steps" id="steps">Install TileDash, open <b>Friends</b>, tap <b>Add friend</b> and enter the code.</p>
+    </div>
+  </section>
+
+  <div class="badges">
+    <a class="badge-google-play" id="google-play" href="https://play.google.com/store/apps/details?id=com.thunderboot.tiledash">
+      <img id="google-play-img" src="/assets/badges/google-play-en.png" alt="Get it on Google Play" width="646" height="250">
+    </a>
+    <a class="badge-app-store" id="app-store" href="#" hidden>
+      <img id="app-store-img" src="/assets/badges/app-store-en.svg" alt="Download on the App Store">
+    </a>
+  </div>
+</main>
+
+<footer id="footer" hidden>
+  <a id="privacy" href="#">Privacy policy</a><span id="footer-sep"> · </span><a id="contact" href="#">Contact</a>
+</footer>
+
 <script>
-  var c = new URLSearchParams(location.search).get("c");
-  if (c && /^[A-Za-z0-9]{1,16}$/.test(c)) document.getElementById("code").textContent = c;
+  // Fill in once they exist. An empty value hides its badge or footer link.
+  var APP_STORE_URL = "";   // TileDash isn't on the App Store yet.
+  var PRIVACY_URL = "";     // For example "/privacy/" once the policy is published here.
+  var SUPPORT_EMAIL = "";
+
+  var TEXT = {
+    en: {
+      title: "Add me on TileDash",
+      heading: "You're invited to play TileDash!",
+      fallbackHeading: "Play TileDash",
+      codeLabel: "Friend code",
+      copy: "Copy",
+      copied: "Copied!",
+      open: "Open in TileDash",
+      steps: "Install TileDash, open <b>Friends</b>, tap <b>Add friend</b> and enter the code.",
+      googlePlayAlt: "Get it on Google Play",
+      appStoreAlt: "Download on the App Store",
+      privacy: "Privacy policy",
+      contact: "Contact"
+    },
+    sv: {
+      title: "Lägg till mig i TileDash",
+      heading: "Du är inbjuden att spela TileDash!",
+      fallbackHeading: "Spela TileDash",
+      codeLabel: "Vänkod",
+      copy: "Kopiera",
+      copied: "Kopierad!",
+      open: "Öppna i TileDash",
+      steps: "Installera TileDash, öppna <b>Vänner</b>, tryck på <b>Lägg till vän</b> och skriv in koden.",
+      googlePlayAlt: "Ladda ned på Google Play",
+      appStoreAlt: "Hämta i App Store",
+      privacy: "Integritetspolicy",
+      contact: "Kontakt"
+    }
+  };
+
+  // The friend code's format, as in the game (FriendCodeFormat.cs): 6 characters without 0/O/1/I/L,
+  // typed with or without the dash, in any case.
+  function normalizeCode(raw) {
+    if (!raw) return null;
+    var code = raw.replace(/[-\s]/g, "").toUpperCase();
+    return /^[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{6}$/.test(code) ? code : null;
+  }
+
+  var lang = /^sv/i.test(navigator.language || "") ? "sv" : "en";
+  var t = TEXT[lang];
+  var $ = function (id) { return document.getElementById(id); };
+
+  document.documentElement.lang = lang;
+  document.title = t.title;
+  $("code-label").textContent = t.codeLabel;
+  $("copy").textContent = t.copy;
+  $("open").textContent = t.open;
+  $("steps").innerHTML = t.steps;
+
+  var code = normalizeCode(new URLSearchParams(location.search).get("c"));
+  if (code) {
+    var shown = code.slice(0, 3) + "-" + code.slice(3);
+    $("heading").textContent = t.heading;
+    $("code").textContent = shown;
+    $("open").href = "tiledash://f?c=" + shown;
+    $("invite").hidden = false;
+    $("copy").addEventListener("click", function () {
+      var done = function () {
+        $("copy").textContent = t.copied;
+        setTimeout(function () { $("copy").textContent = t.copy; }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shown).then(done, function () {});
+      } else {
+        var range = document.createRange();
+        range.selectNodeContents($("code"));
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        try { if (document.execCommand("copy")) done(); } catch (e) {}
+      }
+    });
+  } else {
+    // No code, or not a valid one: a plain TileDash download page.
+    $("heading").textContent = t.fallbackHeading;
+    document.title = "TileDash";
+  }
+
+  // Store badges in the visitor's language. The visitor's own platform only, where its store has the
+  // game; otherwise every store that has it (desktop, or iOS before the App Store listing exists).
+  $("google-play-img").src = "/assets/badges/google-play-" + lang + ".png";
+  $("google-play-img").alt = t.googlePlayAlt;
+  if (lang === "sv") $("google-play-img").className = "tight";
+  $("app-store-img").src = "/assets/badges/app-store-" + lang + ".svg";
+  $("app-store-img").alt = t.appStoreAlt;
+  if (APP_STORE_URL) $("app-store").href = APP_STORE_URL;
+
+  var ua = navigator.userAgent || "";
+  var isAndroid = /Android/i.test(ua);
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  var hasAppStore = !!APP_STORE_URL;
+  var showGooglePlay = !isIOS || !hasAppStore;
+  var showAppStore = hasAppStore && !isAndroid;
+  $("google-play").hidden = !showGooglePlay;
+  $("app-store").hidden = !showAppStore;
+
+  // Footer.
+  if (PRIVACY_URL) { $("privacy").href = PRIVACY_URL; $("privacy").textContent = t.privacy; } else { $("privacy").hidden = true; }
+  if (SUPPORT_EMAIL) { $("contact").href = "mailto:" + SUPPORT_EMAIL; $("contact").textContent = t.contact; } else { $("contact").hidden = true; }
+  $("footer-sep").hidden = !(PRIVACY_URL && SUPPORT_EMAIL);
+  $("footer").hidden = !(PRIVACY_URL || SUPPORT_EMAIL);
 </script>
 </body>
 </html>
